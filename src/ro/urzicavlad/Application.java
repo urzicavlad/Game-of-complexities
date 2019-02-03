@@ -1,8 +1,10 @@
 package ro.urzicavlad;
 
+import ro.urzicavlad.service.GameServiceImpl;
+
 public class Application {
 
     public static void main(String[] args) {
-	// write your code here
+        new GameServiceImpl().start();
     }
 }
