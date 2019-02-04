@@ -5,7 +5,7 @@ import ro.urzicavlad.model.Round;
 import ro.urzicavlad.util.IOUtil;
 
 import java.io.IOException;
-import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class RoundServiceImpl implements RoundService {
@@ -15,7 +15,8 @@ public class RoundServiceImpl implements RoundService {
         Round round = new Round();
         Map<String, String> algorithms;
         try {
-            algorithms = IOUtil.readDataFromFile(Path.of("resources/algorithm_db"));
+
+            algorithms = IOUtil.readDataFromFile(Paths.get("resources/algorithm_db"));
             round.setLevel(getLevel());
             round.setAlgorithmsDb(algorithms);
             round.setAlgorithmsName(getAlgorithms(round));

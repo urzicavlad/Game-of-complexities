@@ -10,7 +10,6 @@ public class GameServiceImpl implements GameService {
 
     private PlayerService playerService = new PlayerServiceImpl();
     private RoundService roundService = new RoundServiceImpl();
-    private Scanner scanner = new Scanner(System.in);
 
     @Override
     public Game start() {
@@ -21,33 +20,32 @@ public class GameServiceImpl implements GameService {
         Game game = new Game();
         game.setPlayer(this.playerService.register());
         boolean quit = false;
-        while (!quit){
+        while (!quit) {
             game.setRound(this.roundService.getRound());
             final Map<String, String> answers = playerService.collectAnswers(game);
             Integer score = calculateScore(answers, game.getRound().getAlgorithmsDb());
-            playerService.updateScore(score,game.getPlayer());
+            playerService.updateScore(score, game.getPlayer());
             System.out.println("You have been accumulate " + game.getPlayer().getScore() + " points!");
             quit = isQuit();
         }
         return game;
     }
 
-
-
     private Integer calculateScore(Map<String, String> answers, Map<String, String> algorithmDb) {
         Map<String, String> playerCorrectAnswer = new HashMap<>();
         for (String answer : answers.keySet()) {
             if (answers.get(answer).equalsIgnoreCase(algorithmDb.get(answer))) {
-                playerCorrectAnswer.put(answer,algorithmDb.get(answer));
+                playerCorrectAnswer.put(answer, algorithmDb.get(answer));
             }
         }
         int points = playerCorrectAnswer.size();
         System.out.println("Your correct answers! " + playerCorrectAnswer);
-        System.out.println("You got " +  points + " points!");
+        System.out.println("You got " + points + " points!");
         return points;
     }
 
-    private boolean isQuit(){
+    private boolean isQuit() {
+        Scanner scanner = new Scanner(System.in);
         System.out.println("Do you want to play again?(Y/N)");
         return scanner.nextLine().equalsIgnoreCase("N");
     }
