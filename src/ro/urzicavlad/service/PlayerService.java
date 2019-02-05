@@ -3,7 +3,7 @@ package ro.urzicavlad.service;
 import ro.urzicavlad.model.Game;
 import ro.urzicavlad.model.Player;
 
-import java.util.Map;
+import ro.urzicavlad.map.Map;
 
 public interface PlayerService {
 

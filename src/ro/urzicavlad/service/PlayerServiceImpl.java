@@ -1,11 +1,11 @@
 package ro.urzicavlad.service;
 
+import ro.urzicavlad.map.MapImpl;
 import ro.urzicavlad.model.Game;
 import ro.urzicavlad.model.Player;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import ro.urzicavlad.map.Map;
 import java.util.Scanner;
 
 public class PlayerServiceImpl implements PlayerService {
@@ -28,12 +28,12 @@ public class PlayerServiceImpl implements PlayerService {
         System.out.println("Enter your name:");
         String name = scanner.nextLine();
         player.setName(name);
-        player.setAnswers(new HashMap<>());
+        player.setAnswers(new MapImpl<>());
         return player;
     }
 
     public Map<String, String> collectAnswers(Game game) {
-        Map<String, String> answers = new HashMap<>();
+        Map<String, String> answers = new MapImpl<>();
         System.out.println("The answer must be in this format: " +
                 "[digit-digit](Algorithm name position - Algorithm complexity position)");
         final List<String> algorithmNames = game.getRound().getAlgorithmsName();

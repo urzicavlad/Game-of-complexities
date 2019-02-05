@@ -7,10 +7,10 @@ import ro.urzicavlad.util.IOUtil;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.*;
+import ro.urzicavlad.map.Map;
 
 public class RoundServiceImpl implements RoundService {
 
-    @Override
     public Round getRound() {
         Round round = new Round();
         Map<String, String> algorithms;

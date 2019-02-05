@@ -1,6 +1,6 @@
 package ro.urzicavlad.model;
 
-import java.util.Map;
+import ro.urzicavlad.map.Map;
 
 public class Player {
 

@@ -1,9 +1,10 @@
 package ro.urzicavlad.service;
 
+import ro.urzicavlad.map.MapImpl;
 import ro.urzicavlad.model.Game;
 
-import java.util.HashMap;
-import java.util.Map;
+
+import ro.urzicavlad.map.Map;
 import java.util.Scanner;
 
 public class GameServiceImpl implements GameService {
@@ -32,7 +33,7 @@ public class GameServiceImpl implements GameService {
     }
 
     private Integer calculateScore(Map<String, String> answers, Map<String, String> algorithmDb) {
-        Map<String, String> playerCorrectAnswer = new HashMap<>();
+        Map<String, String> playerCorrectAnswer = new MapImpl<>();
         for (String answer : answers.keySet()) {
             if (answers.get(answer).equalsIgnoreCase(algorithmDb.get(answer))) {
                 playerCorrectAnswer.put(answer, algorithmDb.get(answer));

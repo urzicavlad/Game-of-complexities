@@ -1,7 +1,7 @@
 package ro.urzicavlad.model;
 
 import java.util.List;
-import java.util.Map;
+import ro.urzicavlad.map.Map;
 
 public class Round {
 
