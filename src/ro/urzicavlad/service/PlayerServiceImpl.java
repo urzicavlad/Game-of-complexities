@@ -1,11 +1,11 @@
 package ro.urzicavlad.service;
 
+import ro.urzicavlad.map.Map;
 import ro.urzicavlad.map.MapImpl;
 import ro.urzicavlad.model.Game;
 import ro.urzicavlad.model.Player;
 
 import java.util.List;
-import ro.urzicavlad.map.Map;
 import java.util.Scanner;
 
 public class PlayerServiceImpl implements PlayerService {
@@ -22,7 +22,7 @@ public class PlayerServiceImpl implements PlayerService {
         player.setScore(player.getScore() + points);
     }
 
-    private Player collectPlayerInfo(){
+    private Player collectPlayerInfo() {
         System.out.println("Welcome at Game of Complexities!");
         Player player = new Player();
         System.out.println("Enter your name:");
@@ -51,7 +51,7 @@ public class PlayerServiceImpl implements PlayerService {
             final int algorithmNameIndex = Integer.parseInt(parts[0]) - 1;
             final int complexityIndex = Integer.parseInt(parts[1]) - 1;
             if (algorithmNameIndex >= algorithmNames.size() ||
-                    complexityIndex >= algorithmsComplexity.size()){
+                    complexityIndex >= algorithmsComplexity.size()) {
                 System.out.println("Invalid Answer! (Maybe you are out of scope:D!)");
                 continue;
             }
@@ -69,10 +69,7 @@ public class PlayerServiceImpl implements PlayerService {
     }
 
     private boolean isValid(String response) {
-        return response.length() == 3 &&
-                Character.isDigit(response.charAt(0)) &&
-                response.charAt(1) == '-' &&
-                Character.isDigit(response.charAt(2));
+        return response.matches("\\d+-\\d+");
     }
 
 }
